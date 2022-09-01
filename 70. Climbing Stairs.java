@@ -1,14 +1,12 @@
 class Solution {
     public int climbStairs(int n) {
-        if (n < 3) return n;
-        int one = 1;
-        int two = 2;
-        int fib = 0;
-        for (int i = 3; i <= n; i++) {
-            fib = one+two;
-            one = two;
-            two = fib;
-        }
-        return fib;
+        return f(n);
+    }
+    HashMap<Integer,Integer> fMap = new HashMap<Integer,Integer>();
+    private int f(int n){
+        if(n <=3)return n;
+        if(fMap.containsKey(n))return fMap.get(n);
+        fMap.put(n,f(n-1) + f(n-2));
+        return fMap.get(n);
     }
 }
