@@ -1,6 +1,13 @@
 class Solution {
     public int climbStairs(int n) {
-        return f(n);
+        int[] ans = new int[n+3];
+        ans[0] = 0;
+        ans[1] = 1;
+        ans[2] = 2;
+        for(int i = 3;i<ans.length;i++){
+            ans[i] = ans[i-1]+ans[i-2];
+        }
+        return ans[n];
     }
     HashMap<Integer,Integer> fMap = new HashMap<Integer,Integer>();
     private int f(int n){
