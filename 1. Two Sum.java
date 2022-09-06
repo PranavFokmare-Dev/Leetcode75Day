@@ -1,5 +1,5 @@
 class Solution {
-    //1st problem
+
     public int[] twoSum(int[] nums, int target) {
         int[] ans = new int[]{-1,-1};
         HashMap<Integer,Integer> indexOf = new HashMap<Integer,Integer>();
