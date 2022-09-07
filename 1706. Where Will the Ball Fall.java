@@ -1,5 +1,6 @@
 class Solution {
     //hard simulation approach
+    //try removing the grid in reaches bottom
         int left = 0; int down = 1; int right = 2;
     int visited = 100;
     public int[] findBall(int[][] grid) {
