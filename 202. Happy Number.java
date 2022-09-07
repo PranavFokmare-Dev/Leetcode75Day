@@ -1,14 +1,17 @@
 class Solution {
-    HashSet<Integer> visited = new HashSet<Integer>();
     public boolean isHappy(int n) {
-        if(visited.contains(n))return false;
-        visited.add(n);
-        int sum = sumOfSquaresOfEachDigit(n);
-        if(sum == 1)
-            return true;
-        return isHappy(sum);
+        int slow = n;
+        int fast = getNext(n);
+        if(fast == slow && fast == 1)return true;
+        while(fast!=slow){
+            slow = getNext(slow);
+            fast = getNext(getNext(fast));
+            if(fast == 1 || slow == 1)return true;
+            
+        }
+        return false;
     }
-    private int sumOfSquaresOfEachDigit(int n){
+    private int getNext(int n){
         int sum = 0;
         while(n>0){
             int units = n%10;
