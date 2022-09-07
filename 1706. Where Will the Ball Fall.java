@@ -1,5 +1,5 @@
 class Solution {
-    
+    //hard simulation approach
         int left = 0; int down = 1; int right = 2;
     int visited = 100;
     public int[] findBall(int[][] grid) {
