@@ -26,7 +26,6 @@ class Solution {
     private int getElement(int x, int[][] matrix){
         int row = x/matrix[0].length;
         int column = x%matrix[0].length;
-        System.out.println(x +" "+row+":"+column);
         return matrix[row][column];
     }
 }
