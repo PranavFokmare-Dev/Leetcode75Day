@@ -14,17 +14,30 @@
  * }
  */
 class Solution {
-    List<Integer> ans = new ArrayList<Integer>();
-    boolean isAnsFound = false;
-    public int kthSmallest(TreeNode root, int k) {
-        f(root,k);
-        return ans.get(k-1);
+    class Helper{
+        public int K;
+        public boolean isAnsFound = false;
+        public int ans = -1;
+        public Helper(int k){
+            this.K = k;
+        }
     }
-    private void f(TreeNode root,int k){
-        if(isAnsFound|| root == null)return;
-        f(root.left,k);
-        ans.add(root.val);      
-        isAnsFound = ans.size()==k;
-        f(root.right,k);
+    public int kthSmallest(TreeNode root, int k) {
+        Helper status = new Helper(k);
+        f(root, status);
+        return status.ans;
+    }
+    private void f(TreeNode root,Helper status){
+        if(status.isAnsFound|| root == null)return;
+        f(root.left,status);
+        
+        status.K--;
+        if(!status.isAnsFound){
+            if(status.K==0){
+                status.isAnsFound = true;
+                status.ans = root.val;
+            }
+        }
+        f(root.right,status);
     }
 }
